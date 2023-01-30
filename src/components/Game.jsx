@@ -23,20 +23,18 @@ export default function Game(props) {
       value.classList.add("disabled");
       value.disabled = true;
     });
-    if (matches.length <= 1) {
-      if (matches[0].value === matches[1].value) {
-        matches.map((value) => {
-          value.classList.remove("disabled");
-          value.classList.add("matched");
-          amountMatches++;
-          console.log(amountMatches);
-          listaComplete.push(matches[0]);
-          listaComplete.push(matches[1]);
-          uWin(amountMatches);
-          matches = [];
-        });
+    if (matches.length > 0 && matches[0].value === matches[1].value) {
+      matches.map((value) => {
+        value.classList.remove("disabled");
+        value.classList.add("matched");
+        amountMatches++;
+        console.log(amountMatches);
+        listaComplete.push(matches[0]);
+        listaComplete.push(matches[1]);
+        uWin(amountMatches);
         matches = [];
-      }
+      });
+      matches = [];
     } else if (matches.length > 0) {
       clearSelection(matches);
       matches = [];
